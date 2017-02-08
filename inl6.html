@@ -1,52 +1,130 @@
 <!DOCTYPE html>
-<html lang="sv">
+<html>
 <head>
-	<meta charset="utf-8">
-	<title>Övningar Clientside programmering</title>
-	<style>
-		body {background-color: #dddddd; font-family: verdana;
-		}
-    body {
-  background-color: #dddddd; font-family: verdana;}
-button {
-  background-color: #6699ff;
-  
-  padding: 5px 10px;
-  font-size: 14px;
-  line-height: 1.5;
-  border-radius: 3px;
-}
-button-btn {
-  padding: 5px 10px;
-  font-size: 8px;
-  line-height: 1.5;
-  border-radius: 3px;
-}
-		
-	h1 {
-		font-size: 1.9em;
-	}
-    h2 {
-      font-size: 1.2em;
-    }
-    h3 {
-      font-size: 1.0em;
-    }
-	</style>
+    <title>Contact Us</title>
+    <meta charset="utf-8" />
+    <link href="../Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="../Content/main.css" rel="stylesheet" />
+    <link href="../Content/custombootstrap.css" rel="stylesheet" />
+    <link href="../Content/toastr.min.css" rel="stylesheet" />
+
 </head>
 <body>
-	<h1>Inlämningsuppgift (6) </h1>
-  
-  
-	<button name="CallToAction" type="button" onclick="index.html">Klicka på mig! </button>
-	<p></p>
-	<p></p>
-	<p></p>
-	<p></p>
-	<p></p>
-	<p></p>
+    <!--Navbar-->
 
-<button-btn name="CallToAction" type="button" onclick="index.html"><a href="index.html">Klicka på mig! </a></button-btn>	
-	
+    <nav id="navigationbar" class="navbar navbar-default">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbarcollapse" aria-expanded="false">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="Index.html">
+                    <img class="logo" src="../images/logo.png" alt="Logo" />
+                </a>
+            </div>
+
+            <div class="collapse navbar-collapse" id="navbarcollapse">
+
+                <form class="navbar-form navbar-right" role="search">
+                    <div class="form-group col-xs-10">
+                        <input type="text" class="form-control" placeholder="Search">
+                    </div>
+                    <button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-search"></span></button>
+                </form>
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="About.html">About Us</a></li>
+                    <li><a href="Contact.html">Contact us</a></li>
+                    <li><a href="Blog.html">Blog</a></li>
+                    
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!--Main-->
+<h1>Inlämningsuppgift (6) </h1>
+    <div class="container margin-top">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="well well-sm">
+
+                    <form class="form-horizontal" action="Success.html" onsubmit="return validateForm()">
+
+                        <div>
+                            <h3 style="margin-bottom: 20px" class="text-center">Contact us</h3>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-md-10 col-md-offset-1">
+                                <input id="fname" placeholder="First Name" class="form-control">
+                                <span class="field-required-hide" id="fnameValidation">Field Required</span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-10 col-md-offset-1">
+                                <input id="lname" placeholder="Last Name" class="form-control">
+                                <span class="field-required-hide" id="lnameValidation">Field Required</span>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-md-10 col-md-offset-1">
+                                <input id="email" placeholder="Email Address" class="form-control">
+                                <span class="field-required-hide" id="emailValidation">Invalid Email Address</span>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-md-10 col-md-offset-1">
+                                <textarea id="message" placeholder="Write your message here..." class="form-control" rows="7"></textarea>
+                                <span class="field-required-hide" id="messageValidation">Field Required</span>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-md-6 text-center">
+                                <button id="submit" type="submit" class="btn btn-custom btn-lg">Submit</button>
+                                <asp:Button ID="btnSubmit" runat="server" Text="Submit" OnClick="SendMail" /><asp:Button ID="btnReset" runat="server" Text="Reset" OnClick="Reset" />
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="well text-center">
+                    <h3>Our Office</h3>
+                    <div id="location">
+                        <h4>Address</h4>
+                        <div>
+                            Mölndalsvägen 81<br />
+                            412 63 Göteborg<br />
+                            +46735062320<br />
+                            support@cimoco.se<br />
+                        </div>
+                        <div id="map1" class="map margin-top-30">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--Footer-->
+
+    <div class="panel-footer">
+        <span class="glyphicon glyphicon-copyright-mark"></span> kim - 2017
+    </div>
+    
+    <!--Scripts-->
+
+    <script src="../scripts/jquery-1.9.1.min.js"></script>
+    <script src="../scripts/bootstrap.min.js"></script>
+    <script src="http://maps.google.com/maps/api/js?sensor=false"></script>
+    <script src="../scripts/googlemaps.js"></script>
+    <script src="../scripts/validateform.js"></script>
+    <script src="../scripts/toastr.min.js"></script>
+
 </body>
 </html>
