@@ -1,0 +1,208 @@
+#tea-jumbotron {
+    background-image: url('../images/background-opacity.png');
+    color: white;
+    background-size: cover;
+    background-attachment: fixed;
+    min-height: 400px;
+}
+
+#setoftea-jumbotron {
+    background-color: #F2E3C4;
+}
+
+#location {
+    background-color: white;
+    padding-top: 20px;
+    margin-top: 20px;
+    border: solid 1px;
+    border-color: #C7AE88;
+}
+
+#indexheader {
+    font-family: 'Lucida Handwriting';
+}
+
+#img-setoftea {
+    max-height: 300px;
+}
+
+h2 {
+    color: #467c45;
+}
+
+h4 a {
+    color: #a78c65;
+}
+
+.bg-thumbnail {
+    background-color: rgba(242, 227, 196, 0.19);
+    border-color: #F2E3C4;   
+}
+
+.margin-top {
+    margin-top: 50px;
+}
+
+.margin-top-30 {
+    margin-top: 30px;
+}
+
+.map {
+    min-width: 300px;
+    min-height: 300px;
+    width: 100%;
+    height: 100%;
+}
+
+.section-heading {
+    position: relative;
+    text-align: center;
+    font-size: 16px;
+    color: #a78c65; 
+    text-transform: uppercase;
+}
+
+.section-heading:before {
+    background-color: #a78c65;
+    content: "";
+    height: 1px;
+    left: 0;
+    top: 50%;
+    width: 100%;
+    position: absolute;
+}
+
+.section-heading span {
+    padding: 0px 32px;
+    padding: 0rem 2rem;
+    background-color: white;
+    display: inline-block;
+    max-width: 90%;
+    position: relative;
+}
+
+.img-eco {
+    height: 85px;
+    width: 85px;
+    margin: 15px 0 0 15px;
+}
+
+.img-tea-fruit {
+    height: 150px;
+    width: 220px;
+    margin-top: 15px;
+}
+
+.padding-left {
+    padding-left: 30px;
+}
+
+.thumbnail-staff {
+    border: 10px solid #F2E3C4;
+}
+
+blockquote {
+    border-left: 3px solid #C7AE88;
+}
+
+.blockquote-reverse {
+    border-right: 3px solid #C7AE88;
+}
+
+.margin-bottom {
+    margin-bottom: 30px;
+}
+
+.img-blog {
+    width: 100%;
+}
+
+.img-pop-blog {
+    max-height: 150px;
+}
+
+a {
+    color: black;
+}
+
+a:hover, a:active, a:focus {
+    color: #467c45;
+    text-decoration: none;
+}
+
+.nav-blog {
+    list-style-type: none;
+    width: 215px;
+    margin: 0 auto;
+    margin-bottom: 30px;
+}
+
+.nav-blog li {
+    width: 30px;
+    float: left;    
+}
+
+.thumbnail-product {
+    max-width: 320px;
+    min-height: 620px;
+}
+
+.thumbnail-product h1 {
+    color: #467c45;
+}
+
+.thumbnail-product h4 {
+    color: #e92626;
+}
+
+.thumbnail-product-sale {
+    color: #e92626;
+    font-size: 16px;
+    text-decoration: line-through;
+}
+
+.thumbnail-product h4:hover {
+    color: #467c45;
+}
+
+.thumbnail-product h3 span {
+    color: #467c45;
+}
+
+.btn-custom {
+    background-color: #C7AE88;
+    color: black;
+}
+
+.btn-custom:hover {
+    color: white;
+}
+
+span.error {
+  color:red;
+}
+
+.logo {
+    width: 170px;
+    height: 35px;
+    padding-bottom: 10px;
+}
+
+.field-required-hide {
+    visibility: hidden;
+    display: none;
+}
+
+.field-required-show {
+    visibility: visible;
+    color: red;
+    display: block;
+}
+
+.thumbnail-details {
+    max-width: 320px;
+}
+
+.text-green {
+    color: #467c45;
+}
