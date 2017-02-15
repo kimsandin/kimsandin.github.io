@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2>XMLHttpRequest object</h2>
+
+<button type="button" onclick="loadXMLDoc()">Change Content</button>
+
+<p id="demo"></p>
+
+<script>
+function loadXMLDoc() {
+  let ajax = new XMLHttpRequest();
+ajax.open('get', 'forverkliga.se/JavaScript/api/simple.php', true);
+responseType = 'text';
+ajax.onreadystatechange = function() {
+    if(ajax.status == 200 && ajax.readyState == 4) {
+        console.log(`Old way: ${ajax.responseText}`);
+        let json = JSON.parse(x);
+        /*for(let x in json) {
+        console.log(ajax.responseText);
+        }*/
+    }
+  console.log('hej')
+};
+ajax.send();
+}
+</script>
+</body>
+</html>
