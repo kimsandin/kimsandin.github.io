@@ -10,7 +10,7 @@
 
 <script>
 function loadXMLDoc() {
-  let ajax = new XMLHttpRequest();
+  let ajax = new XMLHttpRequest('uppg11_1.html');
 ajax.open('get', 'forverkliga.se/JavaScript/api/simple.php', true);
 responseType = 'text';
 ajax.onreadystatechange = function() {
@@ -21,9 +21,9 @@ ajax.onreadystatechange = function() {
         console.log(ajax.responseText);
         }*/
     }
-  console.log('hej')
+  
 };
-ajax.send();
+ajax.send('hej');
 }
 </script>
 </body>
