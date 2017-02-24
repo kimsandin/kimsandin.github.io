@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Uppgift 10</title>
+    <link href="/css/Main.css" rel="stylesheet" />
+    <meta charset="utf-8" />
+</head>
+<body>
+    <div class="center">
+        <input id="addText" /><br />
+        <button id="inputButton">Lägg till</button>
+        <br />
+        <div class="ul">
+            <ul id="ul"></ul>
+            <br />
+        </div>
+        <p>Klicka på orden i listan du vill ändra</p>
+        <div>Skriv in det du vill ändra till här: <input id="changeText" />
+        <button id="saveButton">Spara</button>
+        <button id="removeButton">Ta bort</button></div>
+    </div>
+</body>
+</html>
+
+<script>
+    document.getElementById("inputButton").addEventListener("click", addToList);
+    document.getElementById("removeButton").addEventListener("click",removeText);
+    document.getElementById("saveButton").addEventListener("click",changeText);
+    
+function addToList()
+    {
+        var getText = document.getElementById("addText").value;
+        if (getText.length > 0) {
+            document.getElementById("addText").value = "";
+            var li = document.createElement("li");
+            li.setAttribute("class", "liItem");
+            li.innerHTML = getText;
+            li.addEventListener("click", moveTextFromLiToInput);
+            var getUL = document.getElementById("ul");
+            getUL.appendChild(li);
+        }       
+    }
+    
+function moveTextFromLiToInput()
+    {
+        var thisLi = (this);
+        var getAllLiItems = document.getElementsByClassName("liItem");
+        for (var i = 0; i < getAllLiItems.length; i++) {
+            getAllLiItems[i].classList.remove("highlight");
+        }
+        thisLi.className += " highlight";        
+        document.getElementById("addText").value = thisLi.innerHTML;
+        document.getElementById("editText").value = thisLi.innerHTML;
+    }
+    
+ function removeText ()
+    {
+        var selectedItem = document.getElementsByClassName("highlight");
+        if (selectedItem.length > 0) {
+            var getUL = document.getElementById("ul");
+            getUL.removeChild(selectedItem[0]);
+            document.getElementById("addText").value = "";
+            document.getElementById("editText").value = "";  
+        }   
+    }
+    
+function changeText()
+    {
+        var getTextToChange = document.getElementById("changeText").value;
+        var allLiItems = document.getElementsByClassName("liItem");
+        
+        for (var i = 0; i < allLiItems.length; i++) {
+            if (allLiItems[i].classList.contains("highlight")) {
+                allLiItems[i].innerHTML = getTextToChange;
+            }
+            
+            document.getElementById("changeText").value = getTextToChange;
+            document.getElementById("addText").value = "";
+        }
+    }
+    
+    
+
+</script>
