@@ -1,39 +1,71 @@
 <!DOCTYPE html>
 <html>
-<head>
-<meta name="description" content="React filter list">
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width">
-  <title>JS Bin</title>
-  <script src="https://fb.me/react-with-addons-15.1.0.js"></script>
-  <script src="https://fb.me/react-dom-15.1.0.js"></script>
-</head>
-<body> 
-    <script src="script/test.js" type="text/babel"></script>
-    <h2>Övning 11</h2>
-    
-    for(let x of [1, 2, 3]) {
-    console.log(x);
-}
-    
-    
-</body>
-</html>
 
+<head>
+    <meta name="description" content="React filter list">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>JS Bin</title>
+    <script src="https://fb.me/react-with-addons-15.1.0.js"></script>
+    <script src="https://fb.me/react-dom-15.1.0.js"></script>
+</head>
+
+<body>
+    <script src="script/test.js" type="text/babel"></script>
+    <h2>Övning 11.2</h2>
+
+    <button id="buttonFetch">Test</button>
+    <div id="jsontext"></div>
+    <p></p>
+    <h2>Övning 11.3</h2>
+
+    <button id="buttonFetch3">Test</button>
+    <div id="jsontext3"></div>
+    <script>
+        window.addEventListener('load', function (event) {
+            let el = document.getElementById('buttonFetch');
+            el.addEventListener('click', function (event) {
+                // this is a callback function
+                fetch('http://forverkliga.se/JavaScript/api/simple.php?')
+                    .then(function (response) {
+                        return response.json(); // JSON Promise
+                    })
+                    .then(function (json) {
+                        // where to send the output
+                        let div = document.getElementById('jsontext');
+                        // For every object in the API, format the output
+                        for (let x in json) {
+                            div.innerHTML += x + ': ' + json[x] + '<br/>';
+                        }
+                        console.log(json);
+                    });
+            });
+        })
+    </script>
 <script>
-    window.addEventListener('load', function(fetch) {
-        // button click
+    window.addEventListener('load', function(event) {
+        let el = document.getElementById('buttonFetch3');
+        el.addEventListener('click', function(event) {
+            // this is a callback function
+            fetch('http://forverkliga.se/JavaScript/api/simple.php?key=value')
+            .then(function(response) {
+                return response.json(); // JSON Promise
+            })
+            .then(function(json){
+                  let div = document.getElementById('jsontext3');
+                // For every object in the API, format the output
+                  for(let x in json) {
+                      div.innerHTML+=x + ': ' + json[x] + '<br/>';
+                  }
+                console.log(json);
+            });
+        });
     })
     
-fetch('http://forverkliga.se/JavaScript/api/simple.php')
-.then(function(response) {
-    return response.json(); // JSON Promise
-})
-.then(function(json) {
-    console.log(`New way: ${json}`)
-});
 
 </script>
+</body>
+</html>
 
 
 
@@ -41,4 +73,8 @@ fetch('http://forverkliga.se/JavaScript/api/simple.php')
 
 <style>
 padding-top: 40px;
+    div {
+        font-family: sans-serif;
+        font-weight: bold;
+    }
 </style>

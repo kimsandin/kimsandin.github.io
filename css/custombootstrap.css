@@ -6,7 +6,9 @@
     margin-bottom: 0;
 }
 
-a.thumbnail.active, a.thumbnail:focus, a.thumbnail:hover {
+a.thumbnail.active,
+a.thumbnail:focus,
+a.thumbnail:hover {
     border-color: #467c45;
     text-decoration: none;
 }
@@ -22,13 +24,14 @@ a.thumbnail.active, a.thumbnail:focus, a.thumbnail:hover {
     border-color: #000000;
 }
 
-    .navbar-default .navbar-toggle .icon-bar {
-        background-color: #000000;
-    }
+.navbar-default .navbar-toggle .icon-bar {
+    background-color: #000000;
+}
 
-    .navbar-default .navbar-toggle:focus, .navbar-default .navbar-toggle:hover {
-        background-color: #F2E3C4;
-    }
+.navbar-default .navbar-toggle:focus,
+.navbar-default .navbar-toggle:hover {
+    background-color: #F2E3C4;
+}
 
 .navbar-default {
     background-color: #C7AE88;
@@ -36,39 +39,39 @@ a.thumbnail.active, a.thumbnail:focus, a.thumbnail:hover {
     border: none;
 }
 
-    .navbar-default .navbar-nav > li > a:hover,
-    .navbar-default .navbar-nav > li > a:focus {
-        color: white;
-    }
+.navbar-default .navbar-nav > li > a:hover,
+.navbar-default .navbar-nav > li > a:focus {
+    color: white;
+}
 
-    .navbar-default .navbar-nav > .open > a,
-    .navbar-default .navbar-nav > .open > a:hover,
-    .navbar-default .navbar-nav > .open > a:focus {
-        color: black;
-        background-color: #F2E3C4;
-        background-image: none;
-    }
+.navbar-default .navbar-nav > .open > a,
+.navbar-default .navbar-nav > .open > a:hover,
+.navbar-default .navbar-nav > .open > a:focus {
+    color: black;
+    background-color: #F2E3C4;
+    background-image: none;
+}
 
-    .navbar-default .navbar-brand {
-        color: black;
-        font-family: 'Lucida Handwriting';
-    }
+.navbar-default .navbar-brand {
+    color: black;
+    font-family: 'Lucida Handwriting';
+}
 
+.navbar-default .navbar-collapse,
+.navbar-default .navbar-form {
+    border-color: transparent;
+}
 
-    .navbar-default .navbar-collapse, .navbar-default .navbar-form {
-        border-color: transparent;
-    }
-
-    .navbar-default .navbar-brand:hover {
-        color: white;
-        background-color: transparent;
-    }
+.navbar-default .navbar-brand:hover {
+    color: white;
+    background-color: transparent;
+}
 
 .form-control:focus {
     border-color: #C7AE88;
     outline: 0;
-    -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 8px rgba(255, 255, 255, 0.6);
-    box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 8px rgba(255, 255, 255, 0.6);
+    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 8px rgba(255, 255, 255, 0.6);
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 8px rgba(255, 255, 255, 0.6);
 }
 
 .dropdown-menu > li > a:hover {
@@ -96,7 +99,15 @@ a.thumbnail.active, a.thumbnail:focus, a.thumbnail:hover {
     border-color: #C7AE88;
 }
 
-.btn-default.active.focus, .btn-default.active:focus, .btn-default.active:hover, .btn-default:active.focus, .btn-default:active:focus, .btn-default:active:hover, .open > .dropdown-toggle.btn-default.focus, .open > .dropdown-toggle.btn-default:focus, .open > .dropdown-toggle.btn-default:hover {
+.btn-default.active.focus,
+.btn-default.active:focus,
+.btn-default.active:hover,
+.btn-default:active.focus,
+.btn-default:active:focus,
+.btn-default:active:hover,
+.open > .dropdown-toggle.btn-default.focus,
+.open > .dropdown-toggle.btn-default:focus,
+.open > .dropdown-toggle.btn-default:hover {
     color: #C7AE88;
     background-color: white;
     border-color: #C7AE88;

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="description" content="React filter list">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>JS Bin</title>
+    <link href="/kimsandin.github.io/css/main.css" rel="stylesheet" />
+    <meta charset="utf-8" />
+</head>
+
+<body>
+    <script src="script/test.js" type="text/babel"></script>
+    <h2>Inlämningsuppgift 12</h2>
+
+
+    <button id="btnData" type="button">Hämta</button>
+
+    <ol id="list">
+        <li id="allPop"></li>
+        <p></p>
+        <li id="europePop"></li>
+        <p></p>
+        <li id="fZim"></li>
+        <p></p>
+        <li id="lessPop"></li>
+        <p></p>
+        <li id="contMorePop"></li>
+    </ol>
+    <div id="box"></div>
+    
+    
+    <script>
+        window.addEventListener('load', function () {
+            let buttonFetch = document.getElementById('btnData');
+
+            buttonFetch.addEventListener('click', function () {
+
+                console.log('Klickat på knppen');
+                let url = 'http://forverkliga.se/JavaScript/api/simple.php' + '?world=whatever';
+                let one = document.getElementById('allPop');
+                let totalPopulation = 0;
+                let two = document.getElementById('europePop');
+                let popEurope = 0;
+
+
+                fetch(url)
+                    .then(function (response) {
+                        return response.json(); // JSON Promise
+                    })
+                    .then(function (json) {
+                        let div = document.getElementById('box');
+
+
+                        for (let x of json) {
+                            totalPopulation += x.population;
+                            console.log(totalPopulation);
+                            
+                            if(x.continent === 'Europe'){
+                              popEurope += x.population;
+                                console.log(popEurope)
+                        }
+                        one.innerHTML = " Totalbefolkningen i världen är " + totalPopulation + " människor";
+                        two.innerHTML = " Totalbefolkningen i Europa är " + popEurope + " människor";
+                    
+                        }
+            })
+            })
+        });
+    </script>
