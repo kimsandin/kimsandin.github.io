@@ -38,7 +38,6 @@
             buttonFetch.addEventListener('click', function () {
 
                 console.log('Klickat på knappen');
-                let url = 'http://forverkliga.se/JavaScript/api/simple.php' + '?world=whatever';
                 let one = document.getElementById('allPop');
                 let totalPopulation = 0;
                 let two = document.getElementById('europePop');
@@ -59,12 +58,12 @@
 
 
 
-                fetch(url)
+                fetch('http://forverkliga.se/JavaScript/api/simple.php?world=whatever')
                     .then(function (response) {
                         return response.json(); // JSON Promise
                     })
                     .then(function (json) {
-                        let div = document.getElementById('box');                        
+                        let div = document.getElementById('box');
                         let array = json;
 
                         for (let x of json) {
@@ -81,7 +80,7 @@
                                 console.log(fZimbabwe);
                                 fZimbabwe *= 100;
                             }
-                                                        
+
                             lowPopulation = Math.min.apply(Math, array.map(function (o) {
                                 return o.population;
                             }));
@@ -90,7 +89,7 @@
                                 minPopCountry = x.name;
                                 console.log(minPopCountry);
                             }
-                            
+
                             if (x.continent === 'Oceania') {
                                 popOceania += x.population;
                                 console.log(popOceania);
@@ -100,23 +99,23 @@
                                 popAsia += x.population;
                                 console.log(popAsia);
                             }
-                            
+
                             if (x.continent === 'South America') {
                                 popSAmerica += x.population;
                                 console.log(popSAmerica);
                             }
-                            
+
                             if (x.continent === 'North America') {
                                 popNAmerica += x.population;
                                 console.log(popNAmerica);
                             }
-                            
+
                             if (x.continent === 'Africa') {
                                 popAfrica += x.population;
                                 console.log(popAfrica);
                             }
-                            
-                            var conArr = [,];
+
+                            var conArr = [, ];
                             conArr[0] = popAfrica;
                             conArr[1] = popAsia;
                             conArr[2] = popEurope;
@@ -125,27 +124,22 @@
                             conArr[5] = popSAmerica;
                             highPop = Math.max.apply(Math, conArr);
                             console.log(highPop);
-                            if (highPop === popAfrica){
-                                contHighPop = "Africa";                                
-                            }
-                            else if (highPop === popAsia){
+                            if (highPop === popAfrica) {
+                                contHighPop = "Africa";
+                            } else if (highPop === popAsia) {
                                 contHighPop = "Asia";
-                            }
-                            else if (highPop === popEurope){
+                            } else if (highPop === popEurope) {
                                 contHighPop = "Europe";
-                            }
-                            else if (highPop === popNAmerica){
+                            } else if (highPop === popNAmerica) {
                                 contHighPop = "North America";
-                            }
-                            else if (highPop === popOceania){
+                            } else if (highPop === popOceania) {
                                 contHighPop = "Oceania";
-                            }
-                            else if (highPop === popSAmerica){
+                            } else if (highPop === popSAmerica) {
                                 contHighPop = "South America";
-                            }                            
+                            }
                             console.log(contHighPop);
-                            
-                            
+
+
 
                             one.innerHTML = " Totalbefolkningen i världen är " + totalPopulation + " människor";
 
@@ -154,7 +148,7 @@
                             three.innerHTML = " Andelen kvinnor av befolkningen i Zimbabwe är " + fZimbabwe + " procent";
 
                             four.innerHTML = " Landet med minsta befolkningen är: " + minPopCountry;
-                            
+
                             five.innerHTML = " Kontinenten med högst antal invånare är: " + contHighPop;
 
                         }
