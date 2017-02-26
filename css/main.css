@@ -247,3 +247,15 @@ body {
     margin-left: 100px;
     margin-left: 100px;
 }
+
+.NotRead{
+    background-color: plum;
+}
+
+.Started{
+    background-color: lightblue;
+}
+
+.Done{
+    background-color: palegreen;
+}
