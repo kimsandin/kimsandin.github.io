@@ -29,20 +29,34 @@
         <li id="contMorePop"></li>
     </ol>
     <div id="box"></div>
-    
-    
+
+
     <script>
         window.addEventListener('load', function () {
             let buttonFetch = document.getElementById('btnData');
 
             buttonFetch.addEventListener('click', function () {
 
-                console.log('Klickat på knppen');
+                console.log('Klickat på knappen');
                 let url = 'http://forverkliga.se/JavaScript/api/simple.php' + '?world=whatever';
                 let one = document.getElementById('allPop');
                 let totalPopulation = 0;
                 let two = document.getElementById('europePop');
                 let popEurope = 0;
+                let three = document.getElementById('fZim');
+                let fZimbabwe = 0;
+                let four = document.getElementById('lessPop');
+                let lowPopulation = 0;
+                let minPopCountry = "";
+                let five = document.getElementById('contMorePop');
+                let popOceania = 0;
+                let popAsia = 0;
+                let popSAmerica = 0;
+                let popNAmerica = 0;
+                let popAfrica = 0;
+                let contHighPop = "";
+                let highPop = 0;
+
 
 
                 fetch(url)
@@ -50,22 +64,101 @@
                         return response.json(); // JSON Promise
                     })
                     .then(function (json) {
-                        let div = document.getElementById('box');
-
+                        let div = document.getElementById('box');                        
+                        let array = json;
 
                         for (let x of json) {
                             totalPopulation += x.population;
                             console.log(totalPopulation);
+
+                            if (x.continent === 'Europe') {
+                                popEurope += x.population;
+                                console.log(popEurope);
+                            }
+
+                            if (x.name === 'Zimbabwe') {
+                                fZimbabwe += x.pFemale;
+                                console.log(fZimbabwe);
+                                fZimbabwe *= 100;
+                            }
+                                                        
+                            lowPopulation = Math.min.apply(Math, array.map(function (o) {
+                                return o.population;
+                            }));
+                            console.log(lowPopulation);
+                            if (x.population === lowPopulation) {
+                                minPopCountry = x.name;
+                                console.log(minPopCountry);
+                            }
                             
-                            if(x.continent === 'Europe'){
-                              popEurope += x.population;
-                                console.log(popEurope)
+                            if (x.continent === 'Oceania') {
+                                popOceania += x.population;
+                                console.log(popOceania);
+                            }
+
+                            if (x.continent === 'Asia') {
+                                popAsia += x.population;
+                                console.log(popAsia);
+                            }
+                            
+                            if (x.continent === 'South America') {
+                                popSAmerica += x.population;
+                                console.log(popSAmerica);
+                            }
+                            
+                            if (x.continent === 'North America') {
+                                popNAmerica += x.population;
+                                console.log(popNAmerica);
+                            }
+                            
+                            if (x.continent === 'Africa') {
+                                popAfrica += x.population;
+                                console.log(popAfrica);
+                            }
+                            
+                            var conArr = [,];
+                            conArr[0] = popAfrica;
+                            conArr[1] = popAsia;
+                            conArr[2] = popEurope;
+                            conArr[3] = popNAmerica;
+                            conArr[4] = popOceania;
+                            conArr[5] = popSAmerica;
+                            highPop = Math.max.apply(Math, conArr);
+                            console.log(highPop);
+                            if (highPop === popAfrica){
+                                contHighPop = "Africa";                                
+                            }
+                            else if (highPop === popAsia){
+                                contHighPop = "Asia";
+                            }
+                            else if (highPop === popEurope){
+                                contHighPop = "Europe";
+                            }
+                            else if (highPop === popNAmerica){
+                                contHighPop = "North America";
+                            }
+                            else if (highPop === popOceania){
+                                contHighPop = "Oceania";
+                            }
+                            else if (highPop === popSAmerica){
+                                contHighPop = "South America";
+                            }                            
+                            console.log(contHighPop);
+                            
+                            
+
+                            one.innerHTML = " Totalbefolkningen i världen är " + totalPopulation + " människor";
+
+                            two.innerHTML = " Totalbefolkningen i Europa är " + popEurope + " människor";
+
+                            three.innerHTML = " Andelen kvinnor av befolkningen i Zimbabwe är " + fZimbabwe + " procent";
+
+                            four.innerHTML = " Landet med minsta befolkningen är: " + minPopCountry;
+                            
+                            five.innerHTML = " Kontinenten med högst antal invånare är: " + contHighPop;
+
                         }
-                        one.innerHTML = " Totalbefolkningen i världen är " + totalPopulation + " människor";
-                        two.innerHTML = " Totalbefolkningen i Europa är " + popEurope + " människor";
-                    
-                        }
-            })
+                    })
             })
         });
     </script>
