@@ -28,9 +28,8 @@ var Ordlista = (function (_React$Component) {
           'li',
           { key: obj.word + obj.translation },
           obj.word,
-          '( = ',
-          obj.translation,
-          ')'
+          '= ',
+          obj.translation
         );
       });
       return React.createElement(
