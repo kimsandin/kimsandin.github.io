@@ -40,8 +40,8 @@ getSum(){
     let sum = 0;
 }
     
- if(Number.isNaN(num1) || Number.isNaN(num2) ){
-  this.setState({error: 'Endast siffror tillåtna', result: NaN })
+ if(Number.isNaN(num1) || Number.isNaN(num2)){
+  this.setState({error: 'Endast siffror tillåtna', result: NaN})
 }
 
 else if(this.state.operator === 'add'){
