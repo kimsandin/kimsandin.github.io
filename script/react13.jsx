@@ -30,7 +30,6 @@
             //Visa på sidan
             let divPlace = document.getElementById('place'); ReactDOM.render(element_with_prop, divPlace);
 
-
             // Listor
 
             function MakeList() {
