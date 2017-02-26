@@ -21,6 +21,7 @@ class Ordlista extends React.Component {
 }
 
 
+
 ReactDOM.render(
   <Ordlista lista={lista} />,
   document.getElementById('react-app')
