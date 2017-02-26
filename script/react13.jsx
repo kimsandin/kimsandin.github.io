@@ -22,12 +22,7 @@
             </div>, document.getElementById('element') );
 
             function Place(props) {
-                return <p> Hej, {
-                    props.name
-                }
-                du är i {
-                    props.location
-                }! </p>;
+                return <p> Hej {props.name}, du är i {props.location}! </p>;
             }
             //Skapa element
             const element_with_prop = <Place name = "Kim"

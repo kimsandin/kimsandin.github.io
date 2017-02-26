@@ -88,9 +88,9 @@ function Place(props) {
     return React.createElement(
         'p',
         null,
-        ' Hej, ',
+        ' Hej ',
         props.name,
-        'du är i ',
+        ', du är i ',
         props.location,
         '! '
     );
@@ -205,4 +205,6 @@ var bookElement2 = React.createElement(Book, { className: 'NotRead',
     titel: 'Kungars död',
     author: 'Conn Iggulden' });
 
-ReactDOM.render(bookElement, document.getElementById('books'));
+ReactDOM.render(bookElement, document.getElementById('book1'));
+
+ReactDOM.render(bookElement, document.getElementById('book2'));
