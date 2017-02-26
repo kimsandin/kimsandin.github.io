@@ -73,7 +73,7 @@ else if(this.state.operator === 'multiply'){
           </select>
 
 				  <input id='num2' type='text' value={this.state.num2} onChange={this.updateState} /> = 
-          <ResultComponent result = {this.state.result} />          
+          <Results result = {this.state.result} />          
 		    </Form>
         <p>{this.state.error}</p>
          </div>
