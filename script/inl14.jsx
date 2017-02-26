@@ -14,7 +14,7 @@ class Ordlista extends React.Component {
     let key = 0;
     const nyLista = this.props.lista.map(
       obj => (<li key={obj.word + obj.translation}>{obj.word} 
-      ( = {obj.translation})</li>)
+       = {obj.translation}</li>)
     );
     return (<ol>{nyLista}</ol>);
   }
