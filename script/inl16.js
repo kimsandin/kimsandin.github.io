@@ -82,7 +82,6 @@ class CountryData extends React.Component {
         let changeName = this.refs.inputField; 
         let btn_del = this.refs.btn_del;
         this.state.chosenCName = event.target.value;
-        alert(event.target.value);   
         if(clickedcountryId.includes("countryNum"))
         {
            
