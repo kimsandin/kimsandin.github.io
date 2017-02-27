@@ -107,7 +107,6 @@ class CountryData extends React.Component {
         
     deleteSelected(){
         let valuePop = this.state.chosenCName;
-        alert(valuePop);
         
         let updJson = this.state.json.filter(function(x){
             return (x.name != valuePop);
