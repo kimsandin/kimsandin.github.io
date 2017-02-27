@@ -136,7 +136,6 @@ class CountryData extends React.Component {
                </div>
        );
     }
-        
-//const reactElement = <CountryData title="Länder och deras Folkmängd"/>;
+       
 
 ReactDOM.render(<CountryData/>, document.getElementById('reactAPI-app'));
