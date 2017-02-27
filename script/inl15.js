@@ -49,13 +49,13 @@ else if(this.state.operator === 'add'){
   sum = num1 + num2;
 }
 else if(this.state.operator === 'subtract'){
-  sum = num1 + num2;
+  sum = num1 - num2;
 }
 else if(this.state.operator === 'divide'){
-  sum = num1 + num2;
+  sum = num1 / num2;
 }
 else if(this.state.operator === 'multiply'){
-  sum = num1 + num2;
+  sum = num1 * num2;
 }
   this.setState({result: sum, error: ''});
 }   
