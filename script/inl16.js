@@ -8,6 +8,7 @@ class CountryData extends React.Component {
           numElements: props.numElements,
           continentList: props.continentList,
           chosenCPop: props.chosenCPop,
+          chosenCName: props.chosenCName,
           json: props.json
       }
 
@@ -52,7 +53,7 @@ class CountryData extends React.Component {
     
     
     changeName(event){
-        let countryToChange = this.state.json.find(x => x.population == this.state.chosenCPop);
+        let countryToChange = this.state.json.find(x => x.name == this.state.chosenCName);
         
         countryToChange.name = event.target.value;
         this.countryData();
@@ -80,7 +81,8 @@ class CountryData extends React.Component {
         let clickedcountryId = event.target.id;
         let changeName = this.refs.inputField; 
         let btn_del = this.refs.btn_del;
-            
+        this.state.chosenCName = event.target.value;
+        alert(event.target.value);   
         if(clickedcountryId.includes("countryNum"))
         {
            
@@ -104,12 +106,11 @@ class CountryData extends React.Component {
     }
         
     deleteSelected(){
-        let valuePop = this.state.deleteSelected;
+        let valuePop = this.state.chosenCName;
+        alert(valuePop);
         
         let updJson = this.state.json.filter(function(x){
-            return (x.population != valuePop);
-        }).map(function(x){
-            return (x);
+            return (x.name != valuePop);
         });
         
         this.setState({json: updJson});
