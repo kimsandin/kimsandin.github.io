@@ -259,3 +259,85 @@ body {
 .Done{
     background-color: palegreen;
 }
+
+div div{
+    	padding: 0.5rem;
+    border-radius: 10px;
+    font: 15px Century Gothic;
+
+	color: black;
+	background-color: lightblue;
+
+	margin: 5px;
+    border-style: solid;
+    border-width: 1px;
+    width: 500px;
+    padding-right: 25px;
+}   
+li{
+     font-weight: bold;
+    font: 20px courier;
+}
+
+.backg{
+  font-family: Verdana;
+    font-size: 15px;
+   border-style: solid;
+   border-width: 2px;
+   border-radius: 10px;
+    box-shadow: 4px 4px 4px #669999;
+    color: black;
+}
+
+input{
+ z-index: 1000;
+    box-shadow: 2px 2px 2px #669999;
+    width: 220px;
+     background-color: lightsteelblue;
+	  border-radius: 5px;
+	  font-weight: bolder;
+    	padding: 5px;
+    border-radius: 10px;
+    font: 19px courier;
+	border-color: black;
+
+}
+input:focus {
+    background-color: lightskyblue;
+  
+	border-color: black;
+	border-width: 2px;
+}
+input:hover {
+    background-color: lightskyblue;
+}
+.countryStyle{
+	padding: 0.5rem;
+	border-color: black;
+	color: white;
+	background-color: #669999;
+	box-shadow: 2px 2px 2px #669999;
+	margin: 5px;
+	cursor: pointer;
+}
+button{
+	padding: 0.5rem;
+    border-radius: 10px;
+    font: 15px Century Gothic;
+	border-color: black;
+	color: white;
+	background-color: #6699CC;
+	box-shadow: 10px 10px 5px #669999;
+	margin: 5px;
+	cursor: pointer;
+}
+button:hover{
+	color: lightsteelblue;
+
+#btn_del{
+    background-color: darksalmon;
+    visibility: hidden;
+}
+#inputField{
+    position: absolute;
+}
