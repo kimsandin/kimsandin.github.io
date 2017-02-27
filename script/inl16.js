@@ -137,5 +137,5 @@ class CountryData extends React.Component {
        );
     }
        
-
-ReactDOM.render(<CountryData/>, document.getElementById('reactAPI-app'));
+}
+ReactDOM.render(<CountryData/>, document.getElementById('reactAPI-app'))
