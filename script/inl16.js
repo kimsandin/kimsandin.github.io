@@ -4,47 +4,39 @@ class CountryData extends React.Component {
       super(props);
 		
       this.state = {
-          countryList: props.countryList,
-          numElements: props.numElements,
-          continentList: props.continentList,
-          chosenCPop: props.chosenCPop,
-          chosenCName: props.chosenCName,
-          json: props.json
-      }
-
-       this.selectedCountry = this.selectedCountry.bind(this);
-       this.changeName = this.changeName.bind(this);
-       this.countryData = this.countryData.bind(this);
-       this.deleteSelected = this.deleteSelected.bind(this);
+          countryDataList: [],
+          numElements: 0
+      }   
    }
-
+    
    componentDidMount() {
        
-    let jsonData;
-       
+    let _this = this;
     fetch('http://forverkliga.se/JavaScript/api/simple.php?world=whatever')
     .then(function(response) {
         return response.json();
     })
         
         .then(function(json) {
-            jsonData = json;
+            let count = json.length;
+            _this.setState({countryDataList: json, numElements: count})
+        
         }).catch(function(error) {
             console.log('Fetch misslyckades: ' + error.message);
         });
        
         let timesToFetch = 5;
-        this.timerID = setInterval(
+        _this.timerID = setInterval(
           () => {
-          if (jsonData != undefined)
+          if (json != undefined)
           {              
-              this.setState({json: jsonData});
-              this.countryData();
+              _this.setState({countryDataList: json, numElements: count})
+              
               clearInterval(this.timerID);
           }
           else if(timesToFetch == 0)
           {
-              this.setState({countryList: "Ingen kontakt."});
+              _this.setState({countryDataList: "Ingen kontakt."});
               clearInterval(this.timerID);
           }
           timesToFetch--;
@@ -52,89 +44,87 @@ class CountryData extends React.Component {
     }
     
     
-    changeName(event){
-        let countryToChange = this.state.json.find(x => x.name == this.state.chosenCName);
-        
-        countryToChange.name = event.target.value;
-        this.countryData();
-    }
-    
-    countryData(){
-        
-        let searchVal = this.refs.inputFilter.value;
-        let counter = 0;
-        
-        let newList = this.state.json.filter(function(x){
-            return (x.name.includes(searchVal));
-        }).map(function(x){
-            return (<li className={'back' + counter%2} key={counter}>
-                      <button className="countryStyle" id={"countryNum" + counter++}>{x.name}</button>
-                      <span> - Invånarantal: {x.population}</span>
-                    </li>);
-        });
-        this.setState({countryList: newList});
-        this.setState({numElements: counter});
-    }
-               
-               
-    selectedCountry(event){
-        let clickedcountryId = event.target.id;
-        let changeName = this.refs.inputField; 
-        let btn_del = this.refs.btn_del;
-        this.state.chosenCName = event.target.value;
-        if(clickedcountryId.includes("countryNum"))
-        {
-           
-            let marked = event.target;
-            marked.blur();
-            
-            this.setState({chosenCPop: event.target.nextSibling.innerHTML.match(/(\d+)(?!.*\d)/)[0]});
-            
-            changeName.style.display = 'block';
-            changeName.value = marked.innerHTML;
-            changeName.style.left = marked.offsetLeft + 'px';
-            changeName.style.top = marked.offsetTop + 'px';
-            btn_del.style.visibility = 'visible';
+   
+    deleteCountry(countryId) {
+
+     let newList = this.state.countryDataList;
+     newList.splice(countryId, 1);
+     let count = newList.length;
+
+     this.setState({ list: newList, numElements: count })  
+    }  
+
+		render(){
+			return(
+			<div>
+				<h3>Lista över länder</h3>
+				<ListOfCountries countryDataList={this.state.countryDataList} onDelete={this.deleteCountry.bind(this)}/>
+				<h4>Det finns {this.state.numElements} länder i listan</h4>
+			</div>
+			)
+		}
+}
+
+ 
+class ListOfCountries extends React.Component{
+		constructor(props){
+		super(props);
+            this.state = {
+                    selectedCountryId: null, 
+            } 
+		}
+
+		clickFunction(countryId, event) {
+		event.stopPropagation();
+        if (event.target.id === 'btnDelete') {
+            this.props.onDelete(countryId);
+            this.setState({
+                selectedCountryId: null
+            });
+        } 
+		
+		else {	
+			if(this.state.selectedCountryId !== countryId){
+				this.setState({
+                selectedCountryId:  countryId
+            });
+			}
+			else{
+				this.setState({			
+                selectedCountryId: null
+                });
+                }	
+            }
         }
-            
-        else if(clickedcountryId != "inputField")
-        {            
-            changeName.style.display = 'none';
-            btn_del.style.visibility = 'hidden';
-        }
-    }
-        
-    deleteSelected(){
-        let valuePop = this.state.chosenCName;
-        
-        let updJson = this.state.json.filter(function(x){
-            return (x.name != valuePop);
-        });
-        
-        this.setState({json: updJson});
-        
-        this.timer = setInterval(
-          () => {
-          if (updJson.length == this.state.json.length)
-          {
-              this.countryData();
-              clearInterval(this.timer);
-          }
-        },100);
-    }
-        
-        
-    render(){
-        return(<div id="container" onClick={this.selectedCountry}>
-                 <h2>{this.props.title}</h2>
-                 Filtrera: <input onChange={this.countryData} type="text" id="inputFilter" ref="inputFilter"/>
-                 <input onChange={this.changeName} type="text" id="inputField" hidden ref="inputField"/>
-                 <ol>{this.state.countryList}</ol>
-                 <span>Antal element: {this.state.numElements}</span><br/>
-                 <button className="countryStyle" id="btn_del" onClick={this.deleteSelected} ref="btn_del">Radera landet</button>
-               </div>
-       );
-    }
-       
+
+		render(){
+			const ListOfCountries = this.props.countryDataList.map((country, countryId) =>
+            <li
+                onClick={this.clickFunction.bind(this, countryId)}
+                key={countryId}
+                className='list-group'>
+							
+                Land:  {country.name}, Kontinent: {country.continent} 
+                <span> - Invånarantal: {country.population}</span>
+
+				{this.state.selectedCountryId === countryId &&
+                    <button
+                        id="btnDelete"
+                        onClick={this.clickFunction.bind(this, countryId)}
+                        className={'btn trash-btn'}>
+                        <span className="glyphicon glyphicon-trash"></span>
+                    </button>
+                }
+            </li>);
+
+        return (
+            <div>
+                <ul className='list-group'>
+                    {list}
+                </ul>
+            </div>
+        );
+	
+}
 }
 ReactDOM.render(<CountryData/>, document.getElementById('reactAPI-app'))
