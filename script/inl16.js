@@ -33,7 +33,7 @@ class Countries extends React.Component{
   this.setState({ inputEditor: 'name', editorText: countryName});
   }  
   editContinent = (continentName) => {
-  	this.setState({ inputEditor: 'continent', editorText: continentName})
+  	this.setState({ inputEditor: 'continent', editorText: continentName});
   }  
   handleChange = (e) => {
     this.setState({ editorText: e.target.value });
@@ -44,7 +44,7 @@ class Countries extends React.Component{
   }  
   endEditContinent = () =>{
   	this.setState({ inputEditor: null});
-    this.props.updateContinent(this.props.name, this.state.editorText)
+    this.props.updateContinent(this.props.name, this.state.editorText);
   }  
   render() {
   	 return (
@@ -56,16 +56,15 @@ class Countries extends React.Component{
         }
         	{this.state.inputEditor !== 'name' ?
           <span onClick={() => this.editName(this.props.name)} className="countryName" >{this.props.name}</span> :
-          <input onChange={this.handleChange}  autoFocus onBlur={() => this.endEditName()} value={this.state.editText} /> }
+          <input onChange={this.handleChange}  autoFocus onBlur={() => this.endEditName()} value={this.state.editorText} /> }
         </div>
         <div>
         {this.state.inputEditor !== 'continent' ?
                   <span onClick={() => this.editContinent(this.props.continent)}>{this.props.continent}</span> :
           <input onChange={this.handleChange}  autoFocus onBlur={() => this.endEditContinent()} value={this.state.editorText} /> 
         }       
-        </div>
-
-        <hr/>
+       </div>
+      
     </div>
   );
   }
@@ -95,7 +94,7 @@ class CountryData extends React.Component {
    componentDidMount() {
        
     let _this = this;
-    fetch('http://forverkliga.se/JavaScript/api/simple.php?world=whatever')
+    fetch(`http://forverkliga.se/JavaScript/api/simple.php?world=whatever`)
     .then(function(response) {
         return response.json();
     })
