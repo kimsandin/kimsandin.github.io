@@ -31,21 +31,14 @@ class Countries extends React.Component{
   }
   editName = (countryName) => {
   this.setState({ inputEditor: 'name', editorText: countryName});
-  }  
-  editContinent = (continentName) => {
-  	this.setState({ inputEditor: 'continent', editorText: continentName});
-  }  
+  }    
   handleChange = (e) => {
     this.setState({ editorText: e.target.value });
   }  
   endEditName = () => {
     this.setState({ inputEditor: null});
     this.props.updateCountryName(this.props.name, this.state.editorText);
-  }  
-  endEditContinent = () =>{
-  	this.setState({ inputEditor: null});
-    this.props.updateContinent(this.props.name, this.state.editorText);
-  }  
+  } 
   render() {
   	 return (
     <div onClick={() => this.props.selectCountry(this.props.name)}>
@@ -58,12 +51,6 @@ class Countries extends React.Component{
           <span onClick={() => this.editName(this.props.name)} className="countryName" >{this.props.name}</span> :
           <input onChange={this.handleChange}  autoFocus onBlur={() => this.endEditName()} value={this.state.editorText} /> }
         </div>
-        <div>
-        {this.state.inputEditor !== 'continent' ?
-                  <span onClick={() => this.editContinent(this.props.continent)}>{this.props.continent}</span> :
-          <input onChange={this.handleChange}  autoFocus onBlur={() => this.endEditContinent()} value={this.state.editorText} /> 
-        }       
-       </div>
       
     </div>
   );
@@ -146,15 +133,6 @@ class CountryData extends React.Component {
     }
   
   }
-  
-  updateContinent = (countryName, newContinent) => {
-  	this.state.countries.forEach(function(country){
-    if(country.name === countryName){
-    	country.continent = newContinent;
-    }
-    })
-  }
-  
   filterList = (filterText) => {
   	console.log(filterText);
     if(filterText.length === 0){
