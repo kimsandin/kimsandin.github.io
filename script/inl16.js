@@ -103,27 +103,7 @@ class CountryData extends React.Component {
             _this.setState({countries: json})
 		_this.filterList('');
         
-        }).catch(function(error) {
-            console.log('Fetch misslyckades: ' + error.message);
-        });
-       
-        let timesToFetch = 5;
-        _this.timerID = setInterval(
-          () => {
-          if (json != undefined)
-          {              
-              _this.setState({countries: json})
-		_this.filterList('');
-              
-              clearInterval(this.timerID);
-          }
-          else if(timesToFetch == 0)
-          {
-              _this.setState({countries: "Ingen kontakt."});
-              clearInterval(this.timerID);
-          }
-          timesToFetch--;
-        },100); 
+        })
     }  
    
     deleteCountry = (country) => {
