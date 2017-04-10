@@ -94,7 +94,7 @@ class CountryData extends React.Component {
    componentDidMount() {
        
     let _this = this;
-    fetch('http://forverkliga.se/JavaScript/api/simple.php?world=whatever')
+    fetch('https://forverkliga.se/JavaScript/api/simple.php?world=whatever')
     .then(function(response) {
         return response.json();
     })
