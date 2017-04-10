@@ -14,7 +14,7 @@ class FilterInput extends React.Component{
     	<div>
     		Search:  <input placeholder="Filtrera länder" onChange={this.handleChange} 
 		className="searchInput"></input>
-        <hr/>
+       
       </div>
     )
     }
@@ -78,7 +78,7 @@ const CountryList = (props) => {
         {props.countries.length === 0 ?        
         	<h3>Laddar länder...</h3> : '' }
         
-        	{props.countries.map(country => <Country deleteCountry={props.deleteCountry} 
+        	{props.countries.map(country => <Countries deleteCountry={props.deleteCountry} 
 		selectedCountry={props.selectedCountry} updateCountryName={props.updateCountryName} 
 		updateContinent={props.updateContinent} selectCountry={props.selectCountry} 
 		key={country.name} {...country} />)}
@@ -94,7 +94,7 @@ class CountryData extends React.Component {
    componentDidMount() {
        
     let _this = this;
-    fetch('https://forverkliga.se/JavaScript/api/simple.php?world=whatever')
+    fetch('https://forverkliga.se/JavaScript/api/simple.php?world')
     .then(function(response) {
         return response.json();
     })
@@ -102,28 +102,7 @@ class CountryData extends React.Component {
         .then(function(json) {
             _this.setState({countries: json})
 		_this.filterList('');
-        
-        }).catch(function(error) {
-            console.log('Fetch misslyckades: ' + error.message);
-        });
-       
-        let timesToFetch = 5;
-        _this.timerID = setInterval(
-          () => {
-          if (json != undefined)
-          {              
-              _this.setState({countries: json})
-		_this.filterList('');
-              
-              clearInterval(this.timerID);
-          }
-          else if(timesToFetch == 0)
-          {
-              _this.setState({countries: "Ingen kontakt."});
-              clearInterval(this.timerID);
-          }
-          timesToFetch--;
-        },100); 
+    })
     }  
    
     deleteCountry = (country) => {
