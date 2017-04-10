@@ -130,7 +130,8 @@ class CountryData extends React.Component {
 		  	this.setState(prevState => ({
     		filteredCountries: prevState.filteredCountries.filter(c => c.name != country)
     }));
-}state = {
+}
+    state = {
   	countries: [],
     filteredCountries: [],
     selectedCountry: null,
@@ -156,7 +157,7 @@ class CountryData extends React.Component {
       }
     });
     
-    if(!countryAlreadyExists)
+    if(!countryExists)
     {
       this.state.countries.forEach(function(country) {
         if (country.name === countryName) {
